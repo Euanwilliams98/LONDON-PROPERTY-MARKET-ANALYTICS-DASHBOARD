@@ -1,0 +1,36 @@
+// Core Power BI measures. Adjust names if the imported model differs.
+
+Property Count =
+DISTINCTCOUNT ( Properties[property_id] )
+
+Total Market Value =
+SUM ( Properties[current_price] )
+
+Average Property Price =
+AVERAGE ( Properties[current_price] )
+
+Median Property Price =
+MEDIAN ( Properties[current_price] )
+
+New Build Count =
+CALCULATE ( [Property Count], Properties[is_new_build] = 1 )
+
+New Build Share =
+DIVIDE ( [New Build Count], [Property Count], 0 )
+
+Transaction Count =
+COUNTROWS ( PriceHistory )
+
+Average Sale Price =
+AVERAGE ( PriceHistory[sale_price] )
+
+Previous Year Average Price =
+CALCULATE ( [Average Sale Price], DATEADD ( 'Calendar'[Date], -1, YEAR ) )
+
+YoY Price Change =
+DIVIDE (
+    [Average Sale Price] - [Previous Year Average Price],
+    [Previous Year Average Price],
+    0
+)
+
