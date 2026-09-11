@@ -86,12 +86,11 @@ The raw data is not included in this public repository. A field-level descriptio
 5. Create the Power BI measures in [power-bi/measures.dax](power-bi/measures.dax).
 6. Compare the outputs with the headline KPIs above.
 
-## Limitations and next steps
+## Limitations
 
 - The analysis is descriptive and does not control for inflation, property condition or floor area.
 - Coverage depends on the source and completeness of the supplied records.
 - Average prices should not be interpreted as like-for-like appreciation.
-- A future version could add borough-level mapping, price per square metre, inflation-adjusted values, year-on-year growth and a documented refresh pipeline.
 
 ## Skills demonstrated
 
