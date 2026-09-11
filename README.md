@@ -3,8 +3,11 @@
 [![Power BI](https://img.shields.io/badge/Power%20BI-Dashboard-F2C811?logo=powerbi&logoColor=black)](#dashboard-preview)
 [![SQL](https://img.shields.io/badge/SQL-MySQL-4479A1?logo=mysql&logoColor=white)](sql/analysis_queries.sql)
 [![Data](https://img.shields.io/badge/records-73%2C534-1f6feb)](#dataset)
+![Status](https://img.shields.io/badge/status-complete-2E8B57)
 
-An end-to-end business intelligence project analysing residential property values, housing characteristics and long-term price movements across London. The project combines **SQL, Power Query, data modelling and DAX** to turn 73,534 records into an interactive Power BI report for market and investment analysis.
+> An end-to-end recruiter-ready BI case study covering data quality, modelling, KPI reporting and stakeholder-focused recommendations.
+
+A business intelligence project analysing residential property values, housing characteristics and long-term price movements across London. The project combines **SQL, Power Query, data modelling and DAX** to turn 73,534 records into an interactive Power BI report for market and investment analysis.
 
 ## Executive summary
 
@@ -93,4 +96,9 @@ The raw data is not included in this public repository. A field-level descriptio
 ## Skills demonstrated
 
 `Power BI` · `Power Query` · `DAX` · `SQL` · `MySQL` · `Excel` · `Data cleaning` · `Data modelling` · `Data quality` · `KPI reporting` · `Data storytelling`
+
+## Author
+
+**Euan Williams** — Junior Business Intelligence & Data Analyst  
+[View my full portfolio](https://github.com/Euanwilliams98) · [Connect on LinkedIn](https://www.linkedin.com/in/euan-williams-081755232/)
 
