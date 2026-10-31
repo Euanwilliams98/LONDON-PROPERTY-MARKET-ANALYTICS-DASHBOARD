@@ -1,11 +1,13 @@
-/* Portfolio SQL examples for the London Property Market dashboard (MySQL 8+). */
+/* SQL used to explore the London property snapshot and transaction history.
+   MySQL 8+. These queries assume the cleaned property table has one row per property. */
 
 -- 1. Executive KPIs
 SELECT
     COUNT(DISTINCT property_id) AS properties,
     ROUND(SUM(current_price), 0) AS total_market_value,
     ROUND(AVG(current_price), 0) AS average_price
-FROM properties_main_clean;
+FROM properties_main_clean
+WHERE current_price > 0;
 
 -- Median price pattern compatible with MySQL 8+
 WITH ranked AS (
@@ -13,7 +15,7 @@ WITH ranked AS (
            ROW_NUMBER() OVER (ORDER BY current_price) AS row_num,
            COUNT(*) OVER () AS row_count
     FROM properties_main_clean
-    WHERE current_price IS NOT NULL
+    WHERE current_price > 0
 )
 SELECT AVG(current_price) AS median_price
 FROM ranked
@@ -27,6 +29,7 @@ SELECT
     ROUND(AVG(current_price), 0) AS average_price,
     ROUND(SUM(current_price), 0) AS total_market_value
 FROM properties_main_clean
+WHERE current_price > 0
 GROUP BY property_type
 ORDER BY total_market_value DESC;
 
@@ -37,6 +40,7 @@ SELECT
     ROUND(100.0 * COUNT(*) / SUM(COUNT(*)) OVER (), 1) AS property_share_pct,
     ROUND(AVG(current_price), 0) AS average_price
 FROM properties_main_clean
+WHERE current_price > 0
 GROUP BY is_new_build
 ORDER BY property_count DESC;
 
@@ -47,6 +51,7 @@ SELECT
     ROUND(AVG(current_price), 0) AS average_price,
     ROUND(SUM(current_price), 0) AS total_market_value
 FROM properties_main_clean
+WHERE current_price > 0
 GROUP BY area
 HAVING COUNT(*) >= 30
 ORDER BY average_price DESC
@@ -78,7 +83,7 @@ ORDER BY sale_year;
 WITH ranked_sales AS (
     SELECT property_id, sale_date, sale_price,
            ROW_NUMBER() OVER (
-               PARTITION BY property_id ORDER BY sale_date DESC
+               PARTITION BY property_id ORDER BY sale_date DESC, sale_price DESC
            ) AS recency_rank
     FROM price_history_clean
 )
