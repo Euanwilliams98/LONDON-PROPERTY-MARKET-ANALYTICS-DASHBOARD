@@ -18,7 +18,7 @@ SELECT
     SUM(current_price IS NULL) AS missing_current_price
 FROM properties_main_clean;
 
--- Invalid numeric and categorical values
+-- Invalid numeric, date and categorical values
 SELECT *
 FROM properties_main_clean
 WHERE current_price <= 0
@@ -28,6 +28,7 @@ WHERE current_price <= 0
 SELECT *
 FROM price_history_clean
 WHERE sale_price <= 0
+   OR sale_date IS NULL
    OR sale_date > CURRENT_DATE;
 
 -- Duplicate property records
